@@ -1,11 +1,11 @@
 {
-  "name": "larva/laravel-ranking",
+  "name": "muzidudu/laravel-ranking",
   "description": "This is a ranking.",
   "keywords": [ "laravel", "ranking", "larva" ],
   "type": "library",
   "license": "MIT",
   "require": {
-    "illuminate/support": "^5.1 || ^6.0 || ^7.0 || ^8.0"
+    "illuminate/support": "^5.1 || ^6.0 || ^7.0 || ^8.0 || ^9.0"
   },
   "autoload": {
     "psr-4": {
