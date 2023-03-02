@@ -8,10 +8,12 @@
 namespace Larva\Ranking\Facades;
 
 use Illuminate\Support\Facades\Facade;
+use Larva\Ranking\RankingAdapter;
 use Larva\Ranking\RankingManage;
 
 /**
  * Class Ranking
+ * @method static RankingAdapter get(string $key)
  * @mixin RankingManage
  *
  * @author Tongle Xu <xutongle@gmail.com>
