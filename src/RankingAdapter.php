@@ -44,7 +44,7 @@ class RankingAdapter
      * @param int $scores 分数
      * @return mixed
      */
-    public function addScores($identity, $scores)
+    public function addScores($identity, $scores = 1)
     {
         $key = $this->ranking . date('Ymd');
         return $this->redis->zincrby($key, $scores, $identity);
