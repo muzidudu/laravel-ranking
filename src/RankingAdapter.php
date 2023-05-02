@@ -81,6 +81,46 @@ class RankingAdapter
     }
 
     /**
+     * 获取今日TOP
+     * @return mixed
+     */
+    public function getTodayTop($num = 10)
+    {
+        $date = Carbon::now()->format('Ymd');
+        return $this->getOneDayRankings($date, 0, $num-1);
+    }
+
+    /**
+     * 获取昨日TOP
+     * @return mixed
+     */
+    public function getYesterdayTop($num = 10)
+    {
+        $date = Carbon::now()->subDays(1)->format('Ymd');
+        return $this->getOneDayRankings($date, 0, $num-1);
+    }
+
+    /**
+     * 获取最近7天
+     * @return mixed
+     */
+    public function getLast7DaysTop($num)
+    {
+        $dates = static::getMultiDays(7);
+        return $this->getMultiDaysRankings($dates, 'rank:last_7Days', 0, $num-1);
+    }
+
+    /**
+     * 获取最近30天
+     * @return mixed
+     */
+    public function getLast30DaysTop($num)
+    {
+        $dates = static::getMultiDays(30);
+        return $this->getMultiDaysRankings($dates, 'rank:last_30Days', 0, $num-1);
+    }
+
+    /**
      * 获得指定日期的排名
      * @param string $date 20170101
      * @param int $start 开始行
@@ -123,6 +163,22 @@ class RankingAdapter
         for ($day = 1; $day <= 7; $day++) {
             $dates[] = $dt->format('Ymd');
             $dt->addDay();
+        }
+        return $dates;
+    }
+
+    /**
+     * 获取指定区间日期
+     * @return array
+     */
+    public static function getMultiDays($num = 7)
+    {
+        $dt = Carbon::now();
+        $dates = [];
+        for ($day = $num; $day > 0; $day--) {
+            echo $day.PHP_EOL;
+            $dates[] = $dt->format('Ymd');
+            $dt->subDays();
         }
         return $dates;
     }
