@@ -176,7 +176,6 @@ class RankingAdapter
         $dt = Carbon::now();
         $dates = [];
         for ($day = $num; $day > 0; $day--) {
-            echo $day.PHP_EOL;
             $dates[] = $dt->format('Ymd');
             $dt->subDays();
         }
